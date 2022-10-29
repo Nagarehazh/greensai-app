@@ -1,0 +1,12 @@
+{
+    "ip": "2800:e2:1380:d94:cd7:e3b6:6a01:3db6",
+    "country_name": "Colombia",
+    "country_code": "CO",
+    "currency": [
+      "COP"
+    ],
+    "changeCurrency": {
+      "usd": 0.000207,
+      "eur": 0.000208
+    }
+  }
