@@ -1,0 +1,224 @@
+[
+    {
+        "id": 1,
+        "title": "Pino Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2016/11/23/21/44/bonsai-1854822_960_720.png",
+        "categories": [
+            "senior"
+        ],
+        "age": [
+            5
+        ],
+        "price": 35
+    },
+    {
+        "id": 2,
+        "title": "Fantasy Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2017/04/04/18/59/bonsai-2202769_960_720.png",
+        "categories": [
+            "junior"
+        ],
+        "age": [
+            15
+        ],
+        "price": 720
+    },
+    {
+        "id": 3,
+        "title": "Little Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2017/09/22/01/13/bonsai-2774172_960_720.png",
+        "categories": [
+            "baby"
+        ],
+        "age": [
+            5
+        ],
+        "price": 15
+    },
+    {
+        "id": 4,
+        "title": "Curve Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2016/11/24/17/24/bonsai-1856731_960_720.png",
+        "categories": [
+            "senior"
+        ],
+        "age": [
+            15
+        ],
+        "price": 145
+    },
+    {
+        "id": 5,
+        "title": "Beauty Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2017/04/04/18/59/bonsai-2202768_960_720.png",
+        "categories": [
+            "junior"
+        ],
+        "age": [
+            15
+        ],
+        "price": 55
+    },
+    {
+        "id": 6,
+        "title": "Star Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2017/04/04/18/59/bonsai-2202770_960_720.png",
+        "categories": [
+            "senior"
+        ],
+        "age": [
+            30
+        ],
+        "price": 450
+    },
+    {
+        "id": 7,
+        "title": "Initial Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2016/08/23/08/52/zelkova-serrata-1613784_960_720.png",
+        "categories": [
+            "baby"
+        ],
+        "age": [
+            5
+        ],
+        "price": 20
+    },
+    {
+        "id": 8,
+        "title": "Medium Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://cdn.pixabay.com/photo/2019/12/09/20/31/bonsai-tree-4684340_960_720.png",
+        "categories": [
+            "junior"
+        ],
+        "age": [
+            30
+        ],
+        "price": 200
+    },
+    {
+        "id": 9,
+        "title": "Godness Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/2977433/pexels-photo-2977433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "senior"
+        ],
+        "age": [
+            30
+        ],
+        "price": 1500
+    },
+    {
+        "id": 10,
+        "title": "Mercy Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/6876963/pexels-photo-6876963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "senior"
+        ],
+        "age": [
+            30
+        ],
+        "price": 2250
+    },
+    {
+        "id": 11,
+        "title": "Light Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/8280933/pexels-photo-8280933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "senior"
+        ],
+        "age": [
+            5
+        ],
+        "price": 325
+    },
+    {
+        "id": 12,
+        "title": "Light II Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/8280928/pexels-photo-8280928.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "senior"
+        ],
+        "age": [
+            5
+        ],
+        "price": 325
+    },
+    {
+        "id": 13,
+        "title": "Yellow Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/8280931/pexels-photo-8280931.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "senior"
+        ],
+        "age": [15],
+        "price": 425
+    }, 
+    {
+        "id": 14,
+        "title": "Grow Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/11007019/pexels-photo-11007019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "baby"
+        ],
+        "age": [15],
+        "price": 45
+    },
+    {
+        "id": 15,
+        "title": "Cactus Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/1058963/pexels-photo-1058963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "baby"
+        ],
+        "age": [15],
+        "price": 29
+    },
+    {
+        "id": 16,
+        "title": "Calm Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/6072061/pexels-photo-6072061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "baby"
+        ],
+        "age": [30],
+        "price": 49
+    },
+    {
+        "id": 17,
+        "title": "Rise Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/8408547/pexels-photo-8408547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "junior"
+        ],
+        "age": [30],
+        "price": 125
+    },
+    {
+        "id": 18,   
+        "title": "Ghilbi Bonsai",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra dolor lorem, congue accumsan mauris gravida ut. Vivamus aliquet varius ante ac auctor. Phasellus ante sem, pretium at eros ac, sagittis rutrum libero. Vivamus sit amet sodales orci. Quisque interdum congue ex, at auctor mauris feugiat a.",
+        "img": "https://images.pexels.com/photos/12304367/pexels-photo-12304367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "categories": [
+            "junior"
+        ],
+        "age": [5],
+        "price": 80
+    }
+]
