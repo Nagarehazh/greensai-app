@@ -14,22 +14,25 @@ import {
 } from './LoginStyles';
 
 function Login() {
-  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    login(dispatch, { email, password });
   };
 
+  if (localStorage.getItem('user')) {
+    window.location.href = '/';
+  }
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="username" onChange={(e) => setUsername(e.target.value)} />
+          <Input placeholder="email" type="email" onChange={(e) => setEmail(e.target.value)}  required/>
           <Input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)} />
           <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
           <Error>{error && 'Something went wrong!'}</Error>

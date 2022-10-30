@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 export const cartSlice = createSlice({
@@ -10,7 +11,7 @@ export const cartSlice = createSlice({
   reducers: {
     addProduct: (state, action) => {
       const product = action.payload;
-      const index = state.products.findIndex((item) => item._id === product._id);
+      const index = state.products.findIndex((item) => item.id === product.id);
       if (index === -1) {
         state.products.push(product);
       } else {
@@ -22,7 +23,7 @@ export const cartSlice = createSlice({
     },
     removeProduct: (state, action) => {
       const product = action.payload;
-      const index = state.products.findIndex((item) => item._id === product);
+      const index = state.products.findIndex((item) => item.id === product);
       if (index !== -1) {
         state.quantity -= state.products[index].quantity;
         state.total -= state.products[index].price * state.products[index].quantity;
@@ -32,7 +33,7 @@ export const cartSlice = createSlice({
     },
     increaseQuantity: (state, action) => {
       const product = action.payload;
-      const index = state.products.findIndex((item) => item._id === product);
+      const index = state.products.findIndex((item) => item.id === product);
       if (index !== -1) {
         state.products[index].quantity += 1;
         state.quantity += 1;
@@ -42,7 +43,7 @@ export const cartSlice = createSlice({
     },
     decreaseQuantity: (state, action) => {
       const product = action.payload;
-      const index = state.products.findIndex((item) => item._id === product);
+      const index = state.products.findIndex((item) => item.id === product);
       if (index !== -1) {
         state.products[index].quantity -= 1;
         state.quantity -= 1;

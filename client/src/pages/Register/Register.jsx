@@ -1,6 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../redux/apiCalls';
+import { useDispatch, useSelector} from 'react-redux';
+import { register, login } from '../../redux/apiCalls';
+import { useNavigate } from 'react-router-dom';
+import { loginSuccess } from '../../redux/userRedux'
 import {
   Container,
   Wrapper,
@@ -13,17 +15,20 @@ import {
 } from './RegisterStyles';
 
 function Register() {
-  const [username, setUsername] = React.useState('');
+  const [userName, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [passwordAgain, setPasswordAgain] = React.useState('');
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching } = useSelector((state) => state.user);
+  
 
   const handleClick = (e) => {
     e.preventDefault();
-    register(dispatch, { username, email, password });
-  };
+    register(dispatch, { userName, email, password });
+    };
+
+  
 
   return (
     <Container>

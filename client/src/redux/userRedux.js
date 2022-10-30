@@ -22,10 +22,15 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
-
+    getUserInfoSuccess: (state, action) => {
+      state.currentUser = action.payload;
+    },
+    getUserInfoFailure: (state) => {
+      state.error = true;
+    },
   },
 });
 
-export const { loginStart, loginSuccess, loginFailure } = userSlice.actions;
+export const { loginStart, loginSuccess, loginFailure, getUserInfoSuccess, getUserInfoFailure } = userSlice.actions;
 export default userSlice.reducer;
 

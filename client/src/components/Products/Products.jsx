@@ -1,5 +1,4 @@
 import React from 'react';
-import { publicRequest } from '../../requestMethods';
 import {
   Container,
 } from './ProductsStyles';
@@ -7,23 +6,22 @@ import fullData from '../../constants/fullData.json'
 import Product from '../Product/Product';
 
 function Products({ cat, age, sort }) {
-  const [products] = React.useState(fullData);
-  const [filteredProducts, setFilteredProducts] = React.useState([]);
-
-  
+  const productByCategory = fullData.filter((item) => item.categories[0] === cat);
+  const [products] = React.useState(productByCategory);
+  const [filteredProducts, setFilteredProducts] = React.useState(products);
 
   React.useEffect(() => {
     age === 'all'
       ? setFilteredProducts(products)
       : setFilteredProducts(
-        products.filter((product) => product.age.includes(age)),
-      );
+        products.filter((product) => product.age[0] === parseInt(age)));
+
   }, [products, age]);
 
   React.useEffect(() => {
     if (sort === 'newest') {
       setFilteredProducts(
-        filteredProducts.sort((a, b) => b._id - a._id),
+        filteredProducts.sort((a, b) => b.id - a.id),
       );
     } else if (sort === 'asc') {
       setFilteredProducts(
@@ -35,6 +33,7 @@ function Products({ cat, age, sort }) {
       );
     }
   }, [sort, filteredProducts]);
+
 
   return (
     <Container>

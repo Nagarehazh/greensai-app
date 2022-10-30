@@ -10,6 +10,8 @@ import {
 } from './ProductStyles';
 
 function Product({ item }) {
+  
+
   return (
     <Container>
       <Circle />

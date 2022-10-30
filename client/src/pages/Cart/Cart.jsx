@@ -41,16 +41,21 @@ import {
   Announcement,
   Footer,
 } from '../../components';
+import { getUserInfo } from '../../redux/apiCalls';
 
 const STRIPE_KEY = process.env.REACT_APP_STRIPES_KEY;
 
 function Cart() {
+
+
+
   let cartSelector = useSelector((state) => state.cart);
   // localstorage get cart
 
   if (localStorage.getItem('cart')) {
     cartSelector = JSON.parse(localStorage.getItem('cart'));
   }
+
   React.useEffect(() => {
     // localstorage get cart
     cartSelector = JSON.parse(localStorage.getItem('cart'));
@@ -64,6 +69,13 @@ function Cart() {
   const onToken = (token) => {
     setStripeToken(token);
   };
+
+  useEffect(() => {
+    const number = 3;
+    getUserInfo(dispatch, { number});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
 
   useEffect(() => {
     const makeRequest = async () => {
@@ -142,7 +154,7 @@ function Cart() {
                       <b>Product:</b> {item.title}
                     </ProductName>
                     <ProductId>
-                      <b>ID:</b> {item._id}
+                      <b>ID:</b> {item.id}
                     </ProductId>
                     <ProductType>
                       <b>Type:</b> {item.categories}
@@ -154,9 +166,9 @@ function Cart() {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Remove onClick={() => handleDecrease(item._id)} />
+                    <Remove onClick={() => handleDecrease(item.id)} />
                     <ProductAmount>{item.quantity}</ProductAmount>
-                    <Add onClick={() => handleIncrease(item._id)} />
+                    <Add onClick={() => handleIncrease(item.id)} />
                   </ProductAmountContainer>
                   <ProductPrice>${item.price * item.quantity}</ProductPrice>
                 </PriceDetail>
@@ -180,7 +192,11 @@ function Cart() {
               {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>$ -35.90</SummaryItemPrice> : <SummaryItemPrice>$ 0.00</SummaryItemPrice>}
             </SummaryItem>
             <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
+              <SummaryItemText>Total in USD Dollars</SummaryItemText>
+              {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>$ {cartSelector.total}</SummaryItemPrice> : <SummaryItemPrice>$ {totalPlusShipping}</SummaryItemPrice>}
+            </SummaryItem>
+            <SummaryItem type="total">
+              <SummaryItemText>Total in </SummaryItemText>
               {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>$ {cartSelector.total}</SummaryItemPrice> : <SummaryItemPrice>$ {totalPlusShipping}</SummaryItemPrice>}
             </SummaryItem>
             {stripeToken ? (<span>Processing. Please wait...</span>) : (
