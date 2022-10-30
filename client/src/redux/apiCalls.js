@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess, getUserInfoSuccess, getUserInfoFailure } from './userRedux';
+import { loginFailure, loginStart, loginSuccess} from './userRedux';
 import { registerFailure, registerStart, registerSuccess } from './registerRedux';
 import { publicRequest } from '../requestMethods';
 
@@ -24,7 +24,7 @@ export const register = async (dispatch, user) => {
 };
 
 
-export const getUserInfo = async (dispatch, userId) => {
+export const getUserInfo  = async (userId)  => {
   try {
     // get Ip address from user and sent into body
     // const res = await publicRequest.get(`/users/${userId}/info`, {
@@ -34,14 +34,12 @@ export const getUserInfo = async (dispatch, userId) => {
     // });
 
     // get Ip address from user and sent into header
+    
     const res = await publicRequest.get(`/users/${userId}/info`);
-
-
-    console.log(res.data, "esto llegó *****");
-
-    dispatch(getUserInfoSuccess(res.data));
+    return res;    
   } catch (err) {
-    dispatch(getUserInfoFailure());
+    console.log(err);
+    
   }
 }
 

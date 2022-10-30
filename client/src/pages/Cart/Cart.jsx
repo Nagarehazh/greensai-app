@@ -47,10 +47,8 @@ const STRIPE_KEY = process.env.REACT_APP_STRIPES_KEY;
 
 function Cart() {
 
-
-
   let cartSelector = useSelector((state) => state.cart);
-  // localstorage get cart
+  const userInformation = JSON.parse(localStorage.getItem('userInformation'));
 
   if (localStorage.getItem('cart')) {
     cartSelector = JSON.parse(localStorage.getItem('cart'));
@@ -192,12 +190,16 @@ function Cart() {
               {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>$ -35.90</SummaryItemPrice> : <SummaryItemPrice>$ 0.00</SummaryItemPrice>}
             </SummaryItem>
             <SummaryItem type="total">
-              <SummaryItemText>Total in USD Dollars</SummaryItemText>
+              <SummaryItemText>Total in Dollars</SummaryItemText>
               {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>$ {cartSelector.total}</SummaryItemPrice> : <SummaryItemPrice>$ {totalPlusShipping}</SummaryItemPrice>}
             </SummaryItem>
             <SummaryItem type="total">
-              <SummaryItemText>Total in </SummaryItemText>
-              {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>$ {cartSelector.total}</SummaryItemPrice> : <SummaryItemPrice>$ {totalPlusShipping}</SummaryItemPrice>}
+              <SummaryItemText>Total in Euro</SummaryItemText>
+              {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>: {((totalPlusShipping/userInformation.changeCurrency.usd)*userInformation.changeCurrency.eur).toFixed(2)}</SummaryItemPrice> : <SummaryItemPrice>$ {totalPlusShipping}</SummaryItemPrice>}
+            </SummaryItem>
+            <SummaryItem type="total">
+              <SummaryItemText>Total in {userInformation.currency[0]}</SummaryItemText>
+              {cartSelector.total > 0 && cartSelector.total > (30/userInformation.changeCurrency.usd).toFixed(2) ? <SummaryItemPrice>$ {(1/userInformation.changeCurrency.usd).toFixed(2)}</SummaryItemPrice> : <SummaryItemPrice>: {(totalPlusShipping/userInformation.changeCurrency.usd).toFixed(2)}</SummaryItemPrice>}
             </SummaryItem>
             {stripeToken ? (<span>Processing. Please wait...</span>) : (
               <StripeCheckout

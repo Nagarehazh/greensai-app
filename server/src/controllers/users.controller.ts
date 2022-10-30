@@ -55,15 +55,15 @@ const getUser = async (req: Request, res: Response): Promise<Response> => {
     }
 }
 
-const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
+const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
     try {
 
-        const ip: any = req.header('x-forwarded-for') || req.socket.remoteAddress;
-        const IP = ip.split(":").pop();
+        // const ip: any = req.header('x-forwarded-for') || req.socket.remoteAddress;
+        // const IP = ip.split(":").pop();
         
 
-        console.log(IP, "***************")
-        // const IP = "2800:e2:1380:d94:cd7:e3b6:6a01:3db6";
+        // console.log(IP, "***************")
+        const IP = "2800:e2:1380:d94:cd7:e3b6:6a01:3db6";
 
         const isBanned = await BanIp.findOne({
             where: {
