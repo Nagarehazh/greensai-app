@@ -35,9 +35,9 @@ function Login() {
           <Input placeholder="email" type="email" onChange={(e) => setEmail(e.target.value)}  required/>
           <Input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)} />
           <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
-          <Error>{error && 'Something went wrong!'}</Error>
-          <Link href="/">DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link href="/">CREATE A NEW ACCOUNT</Link>
+          <Error>{error && 'Something went wrong!, check your email/password'}</Error>
+          {/* <Link href="/">DO NOT YOU REMEMBER THE PASSWORD?</Link>
+          <Link href="/">CREATE A NEW ACCOUNT</Link> */}
         </Form>
       </Wrapper>
     </Container>

@@ -6,7 +6,7 @@ import fullData from '../../constants/fullData.json'
 import Product from '../Product/Product';
 
 function Products({ cat, age, sort }) {
-  const productByCategory = fullData.filter((item) => item.categories[0] === cat);
+  const productByCategory = (cat && fullData.filter((item) => item.categories[0] === cat)) || fullData;
   const [products] = React.useState(productByCategory);
   const [filteredProducts, setFilteredProducts] = React.useState(products);
 

@@ -33,6 +33,7 @@ const register = async (req: Request, res: Response) => {
 
 const login = async (req: Request, res: Response) => {
     try {
+        
         const { email, password } = req.body;
         const banned = await BanIp.findOne({
             where: {
@@ -48,12 +49,14 @@ const login = async (req: Request, res: Response) => {
                 email
             }
         });
+        if(user === null) {
+            return res.status(400).json({ message: 'User not found' });
+        }
         if ((user as any).banned) {
             return res.status(400).json({ message: 'You are banned' });
         }
-        if (!user) {
-            return res.status(400).json({ message: 'User not found' });
-        }
+        
+        
         const validPassword = await bcrypt.compare(password, (user as any).password);
         if (!validPassword) {
             return res.status(400).json({ message: 'Invalid password' });

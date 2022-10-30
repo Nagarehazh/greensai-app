@@ -58,7 +58,7 @@ function NavBar() {
             : (
               <>
                 <span>Hi {user.user.dataValues.userName || null}!</span>
-                <button style={{marginLeft: "10px"}} onClick={handleLogout}>Logout</button>
+                <button style={{marginLeft: "10px", border: "none", cursor: "pointer"}} onClick={handleLogout}>Logout</button>
               </>
             )}
           <Link to="/cart">

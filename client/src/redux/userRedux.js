@@ -13,10 +13,14 @@ export const userSlice = createSlice({
       state.isFetching = true;
     },
     loginSuccess: (state, action) => {
+      console.log(action.payload);
       state.isFetching = false;
       state.currentUser = action.payload;
       state.error = false;
-      localStorage.setItem('user', JSON.stringify(action.payload));
+      if (action.payload) {
+        localStorage.setItem('user', JSON.stringify(action.payload));
+      }
+      
     },
     loginFailure: (state) => {
       state.isFetching = false;
