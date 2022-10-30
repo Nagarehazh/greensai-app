@@ -1,6 +1,6 @@
 import { loginFailure, loginStart, loginSuccess} from './userRedux';
 import { registerFailure, registerStart, registerSuccess } from './registerRedux';
-import { publicRequest } from '../requestMethods';
+import { publicRequest, adminRequest } from '../requestMethods';
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -8,7 +8,7 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post('/login', user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
-    dispatch(loginFailure());
+    dispatch(loginFailure(err));
   }
 };
 
@@ -30,9 +30,24 @@ export const getUserInfo  = async (userId)  => {
     return res;    
   } catch (err) {
     console.log(err);
-    
   }
 }
 
+export const getAllUsers = async (userId) => {
+  try {
+    const res = await adminRequest.get(`/${userId}`);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-
+export const updateUser = async (adminId, userId, user) => {
+  try {
+    console.log(adminId, userId, user);
+    const res = await adminRequest.put(`/${adminId}/users/${userId}/ban`, user);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}

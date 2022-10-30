@@ -22,9 +22,9 @@ export const userSlice = createSlice({
       }
       
     },
-    loginFailure: (state) => {
+    loginFailure: (state, action) => {
       state.isFetching = false;
-      state.error = true;
+      state.error = action.payload.response.data;
     },
     
   },

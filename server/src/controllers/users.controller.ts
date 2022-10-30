@@ -11,49 +11,52 @@ const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
 const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { token } = req.body;
-        if (token === ADMIN_TOKEN) {
+        const { id } = req.params;
+        const user = await User.findByPk(id);
+        
+        if(user && (user as any).isAdmin === true) {
             const users = await User.findAll();
-            return res.json({
-                data: users
-            });
+            
+            return res.status(200).json(users);
+            
         } else {
-            return res.status(401).json({
-                message: 'You are not authorized to access this resource'
-            });
+            return res.status(401).json({ message: 'Unauthorized' });
         }
+
+
     } catch (error) {
         return res.status(500).json({
-            message: 'Internal server error'
+            message: 'Something goes wrong',
+            error
         });
     }
-}
-
-
+};
 
 const getUser = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { token } = req.body;
-        if (token === ADMIN_TOKEN) {
-            const { id } = req.params;
-            const user = await User.findOne({
-                where: {
-                    id
-                }
-            });
-            return res.json(user);
+        const { id, id2 } = req.params;
+        const user = await User.findByPk(id);
+        
+        if (user && (user as any).isAdmin === true) {
+            const user = await User.findByPk(id2);
+            
+            if (user) {
+                //user without password
+                const { password, ...userWithoutPassword } = user as any;
+                return res.status(200).json(userWithoutPassword);
+            } else {
+                return res.status(404).json({ message: 'User not found' });
+            }
         } else {
-            return res.status(401).json({
-                message: 'You are not authorized to access this resource'
-            });
-
+            return res.status(401).json({ message: 'Unauthorized' });
         }
     } catch (error) {
         return res.status(500).json({
-            message: 'Internal server error'
+            message: 'Something goes wrong',
+            error
         });
     }
-}
+};
 
 const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
     try {
@@ -91,53 +94,32 @@ const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
 
 const banUserId = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { token } = req.body;
-        if (token === ADMIN_TOKEN) {
-            // const { ip } = req;
-            // const IP = ip.split(":").pop();
-            const { id } = req.params;
+        const { id, id2 } = req.params;
+        const {banned} = req.body;
 
-            const IP = "2800:e2:1380:d94:cd7:e3b6:6a01:3db6";
-            // userId include in BanIp 
-            const findIp = await BanIp.findOne({
-                where: {
-                    userId: id
-                },
-            });
+        console.log(id, id2, banned, "***************")
+        
+        const user = await User.findByPk(id);
+        
+        if (user && (user as any).isAdmin === true) {
+            const user = await User.findByPk(id2);
 
-            console.log(findIp)
-
-            if (findIp && (findIp as any).ip === IP) {
-                return res.json("user/IP already banned");
+            if (user) {
+                await user.update({banned});
+                return res.status(200).json({ message: 'User banned' });
             } else {
-                const banIp = await BanIp.create({
-                    userId: id,
-                    ip: IP
-                });
-
-                const user = await User.findOne({
-                    where: {
-                        id
-                    }
-                });
-                if (user) {
-                    await user.update({
-                        banned: true
-                    });
-
-                }
-
-                return res.json(banIp);
+                return res.status(404).json({ message: 'User not found' });
             }
         } else {
-            return res.status(401).json({
-                message: 'You are not authorized to access this resource'
-            });
+            return res.status(401).json({ message: 'Unauthorized' });
         }
     } catch (error) {
-        return res.json(error);
+        return res.status(500).json({
+            message: 'Something goes wrong',
+            error
+        });
     }
-}
+};
 
 
 
