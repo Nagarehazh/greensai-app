@@ -51,3 +51,12 @@ export const updateUser = async (adminId, userId, user) => {
     console.log(err);
   }
 }
+
+export const getIpBanned = async (userId) => {
+  try {
+    const res = await adminRequest.get(`/${userId}/ban`);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}

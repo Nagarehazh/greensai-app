@@ -13,12 +13,12 @@ const getUsers = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id);
-        
-        if(user && (user as any).isAdmin === true) {
+
+        if (user && (user as any).isAdmin === true) {
             const users = await User.findAll();
-            
+
             return res.status(200).json(users);
-            
+
         } else {
             return res.status(401).json({ message: 'Unauthorized' });
         }
@@ -36,10 +36,10 @@ const getUser = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { id, id2 } = req.params;
         const user = await User.findByPk(id);
-        
+
         if (user && (user as any).isAdmin === true) {
             const user = await User.findByPk(id2);
-            
+
             if (user) {
                 //user without password
                 const { password, ...userWithoutPassword } = user as any;
@@ -63,7 +63,7 @@ const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
 
         // const ip: any = req.header('x-forwarded-for') || req.socket.remoteAddress;
         // const IP = ip.split(":").pop();
-        
+
 
         // console.log(IP, "***************")
         const IP = "2800:e2:1380:d94:cd7:e3b6:6a01:3db6";
@@ -95,17 +95,17 @@ const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
 const banUserId = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { id, id2 } = req.params;
-        const {banned} = req.body;
+        const { banned } = req.body;
 
         console.log(id, id2, banned, "***************")
-        
+
         const user = await User.findByPk(id);
-        
+
         if (user && (user as any).isAdmin === true) {
             const user = await User.findByPk(id2);
 
             if (user) {
-                await user.update({banned});
+                await user.update({ banned });
                 return res.status(200).json({ message: 'User banned' });
             } else {
                 return res.status(404).json({ message: 'User not found' });
@@ -189,27 +189,57 @@ const deleteUser = async (req: Request, res: Response): Promise<Response> => {
     }
 }
 
+const banIp = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const { ip } = req.body;
+        const banIp = await BanIp.findOrCreate({
+            where: {
+                ip
+            }
+        });
+        return res.json(banIp);
+    } catch (error) {
+        return res.json(error);
+    }
+}
+
+const getBanIps = async (_req: Request, res: Response): Promise<Response> => {
+    try {
+        const banIps = await BanIp.findAll();
+        return res.json(banIps);
+    } catch (error) {
+        return res.json(error);
+    }
+}
+
+
+
 const deleteIpBan = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { token } = req.body;
-        if (token === ADMIN_TOKEN) {
-            const { id } = req.params;
-           await BanIp.destroy({
+        const { id } = req.params;
+        const { ip } = req.body;
+        const user = await User.findByPk(id);
+
+        if (user && (user as any).isAdmin === true) {
+            const searchIp = await BanIp.findOne({
                 where: {
-                    userId: id
+                    ip
                 }
             });
-            await User.update({
-                    banned: false
-                }, {
+            if (searchIp) {
+                await BanIp.destroy({
                     where: {
-                        id
+                        ip
                     }
                 });
 
-                return res.json("User ban deleted successfully");
 
-            
+                return res.json("Ip deleted successfully");
+            } else {
+                return res.json("Ip not found");
+            }
+
+
         } else {
             return res.status(401).json({
                 message: 'You are not authorized to access this resource'
@@ -221,6 +251,7 @@ const deleteIpBan = async (req: Request, res: Response): Promise<Response> => {
 }
 
 
+
 export {
     getUsers,
     getUser,
@@ -229,6 +260,8 @@ export {
     deleteUser,
     getUserInfo,
     banUserId,
-    deleteIpBan
+    deleteIpBan,
+    banIp,
+    getBanIps
 }
 

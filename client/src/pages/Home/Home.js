@@ -9,13 +9,14 @@ import {
   Footer,
   ListAllUsers
 } from '../../components';
-import { getUserInfo, getAllUsers } from '../../redux/apiCalls';
+import { getUserInfo, getAllUsers, getIpBanned } from '../../redux/apiCalls';
 
 function Home() {
   //get user localstorage
   const [userInformation, setUserInformation] = React.useState(null);
   const [isAdmin, setIsAdmin] = React.useState(false);
   const [allUsers, setAllUsers] = React.useState(null);
+  const [allIpBanned, setAllIpBanned] = React.useState(null);
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -25,8 +26,11 @@ function Home() {
       setIsAdmin(true);
       const getAllUsersRegistered = async () => {
         const res = await getAllUsers(user?.user.dataValues.id);
-        console.log(res);
+        const resIpBanned = await getIpBanned(user?.user.dataValues.id);
         setAllUsers(res.data);
+        console.log(resIpBanned.data);
+        setAllIpBanned(resIpBanned.data);
+
       };
       getAllUsersRegistered();
     } else {
@@ -52,7 +56,11 @@ function Home() {
         ? (
           <>
             <h2>Admin Dashboard</h2>
-            <ListAllUsers allUsers={allUsers} adminId={ user.user.dataValues.id } />
+            <ListAllUsers 
+              allUsers={allUsers} 
+              adminId={ user.user.dataValues.id } 
+              allIpBanned={allIpBanned}  
+              />
           </>
         )
 

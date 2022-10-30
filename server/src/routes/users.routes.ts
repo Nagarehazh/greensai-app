@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { USERS, USER_ID, USERS_INFO, BAN_USER_ID, ERASE_IP_BAN_FROM_USER_ID } from "../paths";
-import { createUser, getUsers, getUser, deleteUser, updateUser, getUserInfo, banUserId, deleteIpBan} from "../controllers/users.controller";
+import { USERS, USER_ID, USERS_INFO, BAN_USER_ID, BAN_IP } from "../paths";
+import { createUser, getUsers, getUser, deleteUser, updateUser, getUserInfo, banUserId, deleteIpBan, banIp, getBanIps} from "../controllers/users.controller";
 import expeditious from 'express-expeditious';
 
 const cacheoptions = {
@@ -21,7 +21,9 @@ router.get(USERS, getUsers);
 router.get(USER_ID, getUser);
 router.get(USERS_INFO, cache.withTtl('24 hours'), getUserInfo);
 router.put(BAN_USER_ID, banUserId);
-router.delete(ERASE_IP_BAN_FROM_USER_ID, deleteIpBan);
+router.get(BAN_IP, getBanIps);
+router.put(BAN_IP, banIp);
+router.delete(BAN_IP, deleteIpBan);
 router.post(USERS, createUser);
 router.delete(USER_ID, deleteUser);
 router.put(USER_ID, updateUser);
