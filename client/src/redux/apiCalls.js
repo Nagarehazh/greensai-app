@@ -26,15 +26,6 @@ export const register = async (dispatch, user) => {
 
 export const getUserInfo  = async (userId)  => {
   try {
-    // get Ip address from user and sent into body
-    // const res = await publicRequest.get(`/users/${userId}/info`, {
-    //   params: {
-    //     ip,
-    //   },
-    // });
-
-    // get Ip address from user and sent into header
-    
     const res = await publicRequest.get(`/users/${userId}/info`);
     return res;    
   } catch (err) {

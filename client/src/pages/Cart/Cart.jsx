@@ -70,21 +70,16 @@ function Cart() {
 
   useEffect(() => {
     const number = 3;
-    getUserInfo(dispatch, { number});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    getUserInfo(dispatch, { number });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await publicRequest.post('/checkout/payment', {
-          tokenId: stripeToken.id,
-          amount: cartSelector.total * 100,
-        });
-        navigate('/success', { state: {
-          stripeData: res.data,
-          products: cartSelector } });
+        dispatch(clearCart());
+        navigate('/');
       } catch (err) {
         console.log(err);
       }
@@ -99,10 +94,15 @@ function Cart() {
   };
 
   const handleDecrease = (id) => {
-    if (cartSelector.quantity === 1) {
-      dispatch(removeProduct(id));
-    } else {
-      dispatch(decreaseQuantity(id));
+    const quantity = cartSelector.products.map((item) => ( item.id === id ?  item.quantity : null ));
+    for(let i of quantity){
+      if(i !== null){
+        if(i === 1){
+          dispatch(removeProduct(id));
+        }else{
+          dispatch(decreaseQuantity(id));
+        }
+      }
     }
   };
 
@@ -195,11 +195,11 @@ function Cart() {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total in Euro</SummaryItemText>
-              {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>: {((totalPlusShipping/userInformation.changeCurrency.usd)*userInformation.changeCurrency.eur).toFixed(2)}</SummaryItemPrice> : <SummaryItemPrice>$ {totalPlusShipping}</SummaryItemPrice>}
+              {cartSelector.total > 0 && cartSelector.total > 30 ? <SummaryItemPrice>: {((totalPlusShipping / userInformation.changeCurrency.usd) * userInformation.changeCurrency.eur).toFixed(2)}</SummaryItemPrice> : <SummaryItemPrice>$ {totalPlusShipping}</SummaryItemPrice>}
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total in {userInformation.currency[0]}</SummaryItemText>
-              {cartSelector.total > 0 && cartSelector.total > (30/userInformation.changeCurrency.usd).toFixed(2) ? <SummaryItemPrice>$ {(1/userInformation.changeCurrency.usd).toFixed(2)}</SummaryItemPrice> : <SummaryItemPrice>: {(totalPlusShipping/userInformation.changeCurrency.usd).toFixed(2)}</SummaryItemPrice>}
+              {cartSelector.total > 0 && cartSelector.total > (30 / userInformation.changeCurrency.usd).toFixed(2) ? <SummaryItemPrice>$ {(1 / userInformation.changeCurrency.usd).toFixed(2)}</SummaryItemPrice> : <SummaryItemPrice>: {(totalPlusShipping / userInformation.changeCurrency.usd).toFixed(2)}</SummaryItemPrice>}
             </SummaryItem>
             {stripeToken ? (<span>Processing. Please wait...</span>) : (
               <StripeCheckout
