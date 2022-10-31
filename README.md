@@ -8,7 +8,7 @@ https://youtu.be/qtWiIUJ9h8Y
 
 ## Description
 
-- Greensai Ecommerce es una Single Page Applications PERN (PostgreSql, Express, React, Node) STACk desarrollada con typescript en el Back-End y Javascript en el Front End
+- Greensai Ecommerce es una Single Page Application PERN (PostgreSql, Express, React, Node) STACk desarrollada con typescript en el Back-End y Javascript en el Front End
 - Permite conocer el catálogo de productos, agregarlos al carrito de compras, eliminarlos y realizar la compra de los productos seleccionados por medio de Stripe.
 - Filtrar por edad, precio y categoría. 
 - Obtener el costo total de la compra en la moneda local del usuario.
