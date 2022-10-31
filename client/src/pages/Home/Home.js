@@ -32,18 +32,18 @@ function Home() {
 
       };
       getAllUsersRegistered();
-    } else {
+    } 
+
       const getUserInformation = async () => {
-        const res = await getUserInfo(user?.user.dataValues.id);
+        const res = await getUserInfo();
         //localstorage set user information
         localStorage.setItem('userInformation', JSON.stringify(res.data));
 
         setUserInformation(res.data);
       };
       getUserInformation();
-    }
+    
   }, []);
-
 
 
 

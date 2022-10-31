@@ -58,16 +58,10 @@ const getUser = async (req: Request, res: Response): Promise<Response> => {
     }
 };
 
-const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
+const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
     try {
 
-        const ip: any = req.header('X-Forwarded-For') || req.socket.remoteAddress;
-        const IP = ip.split(":").pop();
-        // console.log(IP, ip, "******dsadasdasdasdas*****");
-
-
-        // console.log(IP, "***************")
-        // const IP = "2800:e2:1380:d94:cd7:e3b6:6a01:3db6";
+       const IP = "102.217.238.0";
 
         const isBanned = await BanIp.findOne({
             where: {
@@ -78,7 +72,7 @@ const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
         if (isBanned) {
             return res.json("You are banned");
         } else {
-            const response = IP !== undefined && await getGeolocalization(IP);
+            const response = await getGeolocalization(IP);
 
             if (response) {
                 return res.json(response);
@@ -95,7 +89,6 @@ const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
 const searchInfoWithIp = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { id } = req.params;
-        //ip form params
         const { ip } : any = req.query;
         
         const user = await User.findByPk(id);

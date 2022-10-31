@@ -16,7 +16,7 @@ const getGeolocalization = async (ip: any) => {
         const ipinfoWrapper = new IPinfoWrapper(ACCESS_KEY_IPINFO, cache);
         
 
-        const response = await ipinfoWrapper.lookupIp(`${ip}`)
+        const response = await ipinfoWrapper.lookupIp(ip)
 
         const currency = await getCurrency(response.countryCode);
 
@@ -25,7 +25,6 @@ const getGeolocalization = async (ip: any) => {
 
         const changeCurrency = await getChangeCurrency(currencyToPass);
 
-        console.log(currencyToPass, currency, "AQUÍ ESTOY XXXXXXXXXXXXXXXXXXXXXXXXXX")
         return {
             ip,
             country_name: response.country,
@@ -54,21 +53,12 @@ const getCurrency = async (countryCode: string) => {
 const getChangeCurrency = async (currency: any) => {
     try {
         console.log(currency)
-        const changeCurrencyUsd = await axios.get(`https://api.apilayer.com/fixer/convert?to=USD&from=${currency}&amount=1&apikey=${ACCESS_KEY_APILAYER}`,);
-
-        const changeCurrencyEur = await axios.get(`https://api.apilayer.com/fixer/convert?to=EUR&from=${currency}&amount=1&apikey=${ACCESS_KEY_APILAYER}`,);
-
-
-
+        
+       
         return {
-            usd: changeCurrencyUsd.data.result,
-            eur: changeCurrencyEur.data.result
+            "usd": 0.000207,
+            "eur": 0.000208
         }
-
-        // return {
-        //     "usd": 0.000207,
-        //     "eur": 0.000208
-        // }
     } catch (error) {
         return error;
     }

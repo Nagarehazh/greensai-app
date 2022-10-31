@@ -24,9 +24,9 @@ export const register = async (dispatch, user) => {
 };
 
 
-export const getUserInfo  = async (userId)  => {
+export const getUserInfo  = async ()  => {
   try {
-    const res = await publicRequest.get(`/users/${userId}/info`);
+    const res = await publicRequest.get(`/users/info`);
     return res;    
   } catch (err) {
     console.log(err);

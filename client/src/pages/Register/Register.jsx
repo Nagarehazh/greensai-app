@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { register, login } from '../../redux/apiCalls';
 import { useNavigate } from 'react-router-dom';
-import { loginSuccess } from '../../redux/userRedux'
 import {
   Container,
   Wrapper,
@@ -15,6 +14,7 @@ import {
 } from './RegisterStyles';
 
 function Register() {
+  const navigate = useNavigate();
   const [userName, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -26,7 +26,10 @@ function Register() {
   const handleClick = (e) => {
     e.preventDefault();
     register(dispatch, { userName, email, password });
-    };
+    setTimeout(() => {
+      navigate('/');
+    }, 1000);
+  };
 
   
 
