@@ -23,7 +23,7 @@ const getGeolocalization = async (ip: any) => {
 
         const currencyToPass = Object.keys(currency[0].currencies)
 
-        const changeCurrency = await getChangeCurrency(currencyToPass);
+        const changeCurrency = await findChangeCurrency(currencyToPass);
 
         return {
             ip,
@@ -50,19 +50,19 @@ const getCurrency = async (countryCode: string) => {
     }
 }
 
-const getChangeCurrency = async (currency: any) => {
-    try {
-        console.log(currency)
+// const getChangeCurrency = async (currency: any) => {
+//     try {
+//         console.log(currency)
         
        
-        return {
-            "usd": 0.000207,
-            "eur": 0.000208
-        }
-    } catch (error) {
-        return error;
-    }
-}
+//         return {
+//             "usd": 0.000207,
+//             "eur": 0.000208
+//         }
+//     } catch (error) {
+//         return error;
+//     }
+// }
 
 
 const searchGeolocalization = async (ip: string) => {

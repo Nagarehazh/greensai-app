@@ -99,7 +99,7 @@ const ListAllUsers = (props) => {
             {searchResult !== null && searchResult !== "No response" && searchResult && (
               <>
                 <span style={{ marginBottom: "10px" }}>
-                  IP: {searchResult.ip || "IP not found"}
+                  IP: {searchResult.ip || "User Banned"}
                 </span>
                 <span style={{ marginBottom: "10px" }}>
                   Country: {searchResult.country_name}

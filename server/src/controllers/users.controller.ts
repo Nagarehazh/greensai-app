@@ -94,6 +94,18 @@ const searchInfoWithIp = async (req: Request, res: Response): Promise<Response> 
         const user = await User.findByPk(id);
 
         if (user && (user as any).isAdmin === true) {
+            const isIpBanned = await BanIp.findOne({
+                where: {
+                    ip
+                }
+            });
+
+            if (isIpBanned) {
+                return res.json("IP is banned");
+            } 
+              
+
+                
             const response = ip !== undefined && await searchGeolocalization(ip);
 
             if (response) {
