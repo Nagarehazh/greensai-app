@@ -21,11 +21,11 @@ https://youtu.be/qtWiIUJ9h8Y
 
 
 ![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/assets/foto_1.png) <br /><br />
-![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/client/public/assets/foto_2.png) <br /><br />
-![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/client/public/assets/foto_3.png) <br /><br />
-![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/client/public/assets/foto_4.png)
-![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/client/public/assets/foto_5.png)
-![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/client/public/assets/foto_6.png)
+![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/assets/foto_2.png) <br /><br />
+![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/assets/foto_3.png) <br /><br />
+![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/cassets/foto_4.png)
+![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/assets/foto_5.png)
+![ScreenShoot1](https://github.com/Nagarehazh/greensai-app/blob/master/assets/foto_6.png)
 
 ## Video Presentation
 
