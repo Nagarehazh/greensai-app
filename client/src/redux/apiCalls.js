@@ -33,6 +33,20 @@ export const getUserInfo  = async (userId)  => {
   }
 }
 
+export const searchIpInfo = async (adminId, ip) => {
+  try {
+    console.log(ip);
+    const res = await adminRequest.get(`/${adminId}/ip`, {
+      params: {
+        ip: ip.ip
+        }
+        });
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export const getAllUsers = async (userId) => {
   try {
     const res = await adminRequest.get(`/${userId}`);
@@ -44,7 +58,6 @@ export const getAllUsers = async (userId) => {
 
 export const updateUser = async (adminId, userId, user) => {
   try {
-    console.log(adminId, userId, user);
     const res = await adminRequest.put(`/${adminId}/users/${userId}/ban`, user);
     return res;
   } catch (err) {
@@ -55,6 +68,25 @@ export const updateUser = async (adminId, userId, user) => {
 export const getIpBanned = async (userId) => {
   try {
     const res = await adminRequest.get(`/${userId}/ban`);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const updateIpBanned = async (adminId, ipBanned) => {
+  try {
+    console.log(adminId, ipBanned);
+    const res = await adminRequest.put(`/${adminId}/ban`, ipBanned);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const deleteIpBanned = async (adminId, ipBanned) => {
+  try {
+    const res = await adminRequest.delete(`/${adminId}/ban`, {data: ipBanned});
     return res;
   } catch (err) {
     console.log(err);

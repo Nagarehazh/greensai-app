@@ -1,4 +1,4 @@
-{
+[{
     "ip": "2800:e2:1380:d94:cd7:e3b6:6a01:3db6",
     "country_name": "Colombia",
     "country_code": "CO",
@@ -9,4 +9,18 @@
       "usd": 0.000207,
       "eur": 0.000208
     }
+  },
+
+
+  {
+    "ip": "46.19.37.108",
+    "country_name": "Netherlands",
+    "country_code": "NL",
+    "currency": [
+      "EUR"
+    ],
+    "changeCurrency": {
+      "usd": 0.995803
+    }
   }
+  ]

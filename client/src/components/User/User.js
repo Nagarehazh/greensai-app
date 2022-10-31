@@ -13,7 +13,8 @@ import {
     ButtonModal,
     SelectCategory,
     OptionCategory,
-    } from './UserStyles'
+    
+} from './UserStyles'
 import {
     Modal
 } from '..'
@@ -27,7 +28,6 @@ const User = (props) => {
 
     const onSubmitForm = (e) => {
         e.preventDefault();
-        console.log('submit');
         let ban = false;
         if(becomeBanned === "true"){
             ban = true;

@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "db123hazh"
+      POSTGRES_USER: postgres
+      POSTGRES_DB: usermanage
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db:/var/lib/postgresql/data
+  web:
+    build: .
+    image: node-server-image
+    depends_on:
+      - postgres
+    ports:
+      - '3001:3001'
+    
+    

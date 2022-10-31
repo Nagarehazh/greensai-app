@@ -17,7 +17,7 @@ function Modal({ children, modal, setModal }) {
         <Overlay>
           <ModalContainer>
             <EncabezadoModal>
-              <h3>Ban Dashboard</h3>
+              <h3>Greensai Dashboard</h3>
             </EncabezadoModal>
             <ButtonClose onClick={() => setModal(!modal)}>X</ButtonClose>
             {children}

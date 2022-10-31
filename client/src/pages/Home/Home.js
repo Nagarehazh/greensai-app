@@ -28,7 +28,6 @@ function Home() {
         const res = await getAllUsers(user?.user.dataValues.id);
         const resIpBanned = await getIpBanned(user?.user.dataValues.id);
         setAllUsers(res.data);
-        console.log(resIpBanned.data);
         setAllIpBanned(resIpBanned.data);
 
       };

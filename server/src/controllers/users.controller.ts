@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../models/user";
 import { BanIp } from "../models/banip";
-import { getGeolocalization } from "./utils/apicalls";
+import { getGeolocalization, searchGeolocalization } from "./utils/apicalls";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv'
@@ -58,15 +58,16 @@ const getUser = async (req: Request, res: Response): Promise<Response> => {
     }
 };
 
-const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
+const getUserInfo = async (req: Request, res: Response): Promise<Response> => {
     try {
 
-        // const ip: any = req.header('x-forwarded-for') || req.socket.remoteAddress;
-        // const IP = ip.split(":").pop();
+        const ip: any = req.header('X-Forwarded-For') || req.socket.remoteAddress;
+        const IP = ip.split(":").pop();
+        // console.log(IP, ip, "******dsadasdasdasdas*****");
 
 
         // console.log(IP, "***************")
-        const IP = "2800:e2:1380:d94:cd7:e3b6:6a01:3db6";
+        // const IP = "2800:e2:1380:d94:cd7:e3b6:6a01:3db6";
 
         const isBanned = await BanIp.findOne({
             where: {
@@ -91,13 +92,38 @@ const getUserInfo = async (_req: Request, res: Response): Promise<Response> => {
     }
 }
 
+const searchInfoWithIp = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        const { id } = req.params;
+        //ip form params
+        const { ip } : any = req.query;
+        
+        const user = await User.findByPk(id);
+
+        if (user && (user as any).isAdmin === true) {
+            const response = ip !== undefined && await searchGeolocalization(ip);
+
+            if (response) {
+                return res.json(response);
+            } else {
+                return res.json("No response");
+            }
+        } else {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+    } catch (error) {
+        return res.json(error);
+    }
+}
+
+
+
+
 
 const banUserId = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { id, id2 } = req.params;
         const { banned } = req.body;
-
-        console.log(id, id2, banned, "***************")
 
         const user = await User.findByPk(id);
 
@@ -262,6 +288,7 @@ export {
     banUserId,
     deleteIpBan,
     banIp,
-    getBanIps
+    getBanIps,
+    searchInfoWithIp
 }
 
