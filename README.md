@@ -8,6 +8,8 @@ https://youtu.be/qtWiIUJ9h8Y
 
 ## Description
 
+Inspirado en el concepto de Rurall de tranformar productores del campo en empresarios del agro, he creado Greensai (un ecommerce de Bonsais), como respuesta al challenge planteado, 
+
 - Greensai Ecommerce es una Single Page Application PERN (PostgreSql, Express, React, Node) STACk desarrollada con typescript en el Back-End y Javascript en el Front End
 - Permite conocer el catálogo de productos, agregarlos al carrito de compras, eliminarlos y realizar la compra de los productos seleccionados por medio de Stripe.
 - Filtrar por edad, precio y categoría. 
